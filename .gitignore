@@ -6,3 +6,5 @@ node_modules/
 .env.*
 private/
 result/
+.claude/settings.local.json
+CLAUDE.local.md
