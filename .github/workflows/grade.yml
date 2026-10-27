@@ -1,0 +1,16 @@
+name: Check hooks submission
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+permissions:
+  contents: read
+  pull-requests: read
+  id-token: write
+jobs:
+  grade:
+    uses: TensorOpsAI/tensorlearn-claude-lab-grader/.github/workflows/grade.yml@e7ee52413add236d6266017af4ff986ed342e25a
+    with:
+      grader-sha: e7ee52413add236d6266017af4ff986ed342e25a
+      exercise-key: hooks
+      layout: standalone

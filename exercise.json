@@ -1,0 +1,23 @@
+{
+  "key": "hooks",
+  "title": "Protect files through every write path",
+  "minutes": 30,
+  "chapter": "Chapter 1 \u00b7 Skills / Chapter 2 \u00b7 Approval",
+  "writeAllow": [
+    "guard/**",
+    "tests/student/guard/**",
+    "assessment.json"
+  ],
+  "practice": [
+    "hooks.practice"
+  ],
+  "needsAI": true,
+  "brief": "A restriction blocks direct edits to approved intent, but a shell command still overwrites it. A broad repair then blocks legitimate development as well.",
+  "acceptance": [
+    "Protected intent and instructor tests cannot change through accepted tool paths.",
+    "Normal source edits are allowed.",
+    "Invalid or ambiguous requests fail safely with an explanation.",
+    "The submitted guard\u2019s decisions are correct independently of the outer worker protection."
+  ],
+  "recipeIndex": 5
+}

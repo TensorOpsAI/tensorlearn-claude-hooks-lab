@@ -1,0 +1,72 @@
+[
+  {
+    "id": "source-edit",
+    "event": {
+      "tool_name": "Edit",
+      "tool_input": {
+        "file_path": "/workspace/src/app.mjs",
+        "old_string": "old",
+        "new_string": "new"
+      },
+      "cwd": "/workspace"
+    },
+    "expected": "allow"
+  },
+  {
+    "id": "intent-write",
+    "event": {
+      "tool_name": "Write",
+      "tool_input": {
+        "file_path": "/workspace/intent.md",
+        "content": "replace"
+      },
+      "cwd": "/workspace"
+    },
+    "expected": "deny"
+  },
+  {
+    "id": "shell-read",
+    "event": {
+      "tool_name": "Bash",
+      "tool_input": {
+        "command": "cat intent.md"
+      },
+      "cwd": "/workspace"
+    },
+    "expected": "allow"
+  },
+  {
+    "id": "shell-redirect",
+    "event": {
+      "tool_name": "Bash",
+      "tool_input": {
+        "command": "printf changed > intent.md"
+      },
+      "cwd": "/workspace"
+    },
+    "expected": "deny"
+  },
+  {
+    "id": "traversal",
+    "event": {
+      "tool_name": "Edit",
+      "tool_input": {
+        "file_path": "/workspace/src/../intent.md"
+      },
+      "cwd": "/workspace"
+    },
+    "expected": "deny"
+  },
+  {
+    "id": "symlink",
+    "event": {
+      "tool_name": "Write",
+      "tool_input": {
+        "file_path": "/workspace/src/shortcut",
+        "content": "replace"
+      },
+      "cwd": "/workspace"
+    },
+    "expected": "deny"
+  }
+]

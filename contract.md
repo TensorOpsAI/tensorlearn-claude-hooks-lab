@@ -1,0 +1,5 @@
+# Guard contract
+Export synchronous `decide(event)` from guard/guard.mjs. The harness supplies native event-shaped JSON: `{tool_name, tool_input, cwd}`. Return `{hookSpecificOutput:{hookEventName:"PreToolUse",permissionDecision:"allow"|"deny",permissionDecisionReason:string}}`. Malformed output/crashes are failures, not successful denials.
+Fixture workspace is `/workspace`; protected targets are `/workspace/intent.md` and everything under `/workspace/tests/instructor/`. Ordinary `src/**` writes are permitted. The fixture worker contains a symlink `/workspace/src/shortcut` to `/workspace/intent.md`; treat that destination as protected. Do not infer safety from a filename substring alone.
+Native Edit/Write inputs use file_path. Bash uses command. The fixed probe vocabulary includes simple reads, literal redirects, cp, mv, tee and a python write. You may conservatively deny a command you cannot classify, but ordinary source edits and read-only commands must work. Full arbitrary-shell parsing is not required or claimed.
+The harness maps live MCP probe IDs to these native fixtures. Only the instructor controls the probe map and actual effects.
